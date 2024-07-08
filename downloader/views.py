@@ -13,8 +13,8 @@ def home(request):
             file_path = stream.download(output_path=output_path)
             return redirect('download', file_name=os.path.basename(file_path))
         except Exception as e:
-            return render(request, 'downloader/home.html', {'error': str(e)})
-    return render(request, 'downloader/home.html')
+            return render(request, 'downloader/index.html', {'error': str(e)})
+    return render(request, 'downloader/index.html')
 
 def download(request, file_name):
     file_path = os.path.join('downloads', file_name)
