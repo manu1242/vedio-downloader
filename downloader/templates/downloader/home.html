@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    
+    <title>YouTube Video Downloader</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'downloader/style.css' %}">
+</head>
+<body>
+    <div class="YouTube">
+    <h2>YouTube Video Downloader</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="url">YouTube URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Download</button>
+    </form>
+    {% if success %}
+        <p>Video "{{ title }}" is ready for download!</p>
+        <a href="{% url 'download' title %}">Download Video</a>
+    {% elif error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+    </div>
+</body>
+</html>
